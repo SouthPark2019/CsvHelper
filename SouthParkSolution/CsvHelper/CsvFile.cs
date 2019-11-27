@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FreeHK2019.CsvHelper
+namespace SouthParkSolution.CsvHelper
 {
 
     /// <summary>
@@ -15,19 +15,19 @@ namespace FreeHK2019.CsvHelper
 
         #region Properties
 
-        /// <summary>
-        /// Gets the file headers
-        /// </summary>
+      /// <summary>
+      /// 存储标题
+      /// </summary>
         public readonly List<string> Headers = new List<string>();
 
-        /// <summary>
-        /// Gets the records in the file
-        /// </summary>
+       /// <summary>
+       /// 存储记录
+       /// </summary>
         public readonly CsvRecords Records = new CsvRecords();
 
-        /// <summary>
-        /// Gets the header count
-        /// </summary>
+       /// <summary>
+       /// 列数
+       /// </summary>
         public int HeaderCount
         {
             get
@@ -37,7 +37,7 @@ namespace FreeHK2019.CsvHelper
         }
 
         /// <summary>
-        /// Gets the record count
+        /// 行数（不包括标题）
         /// </summary>
         public int RecordCount
         {   
@@ -52,10 +52,10 @@ namespace FreeHK2019.CsvHelper
         #region Indexers
 
         /// <summary>
-        /// Gets a record at the specified index
+        /// 获得指定行数的记录
         /// </summary>
-        /// <param name="recordIndex">Record index</param>
-        /// <returns>CsvRecord</returns>
+        /// <param name="recordIndex"></param>
+        /// <returns></returns>
         public CsvRecord this[int recordIndex]
         {
             get
@@ -68,10 +68,10 @@ namespace FreeHK2019.CsvHelper
         }
 
         /// <summary>
-        /// Gets the field value at the specified record and field index
+        /// 获得或设置指定行指定列的字段值
         /// </summary>
-        /// <param name="recordIndex">Record index</param>
-        /// <param name="fieldIndex">Field index</param>
+        /// <param name="recordIndex"></param>
+        /// <param name="fieldIndex"></param>
         /// <returns></returns>
         public string this[int recordIndex, int fieldIndex]
         {
@@ -101,10 +101,10 @@ namespace FreeHK2019.CsvHelper
         }
 
         /// <summary>
-        /// Gets the field value at the specified record index for the supplied field name
+        /// 获得或设置指定行指定字段名的字段值
         /// </summary>
-        /// <param name="recordIndex">Record index</param>
-        /// <param name="fieldName">Field name</param>
+        /// <param name="recordIndex"></param>
+        /// <param name="fieldName"></param>
         /// <returns></returns>
         public string this[int recordIndex, string fieldName]
         {
@@ -166,34 +166,18 @@ namespace FreeHK2019.CsvHelper
 
         #region Methods
 
-        /// <summary>
-        /// Populates the current instance from the specified file
-        /// </summary>
-        /// <param name="filePath">File path</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
         public void Populate(string filePath, bool hasHeaderRow)
         {
             Populate(filePath, null, hasHeaderRow, false);
         }
 
-        /// <summary>
-        /// Populates the current instance from the specified file
-        /// </summary>
-        /// <param name="filePath">File path</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
+
         public void Populate(string filePath, bool hasHeaderRow, bool trimColumns)
         {
             Populate(filePath, null, hasHeaderRow, trimColumns);
         }
 
-        /// <summary>
-        /// Populates the current instance from the specified file
-        /// </summary>
-        /// <param name="filePath">File path</param>
-        /// <param name="encoding">Encoding</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
+
         public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool trimColumns)
         {
             using (CsvReader reader = new CsvReader(filePath, encoding){HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns})
@@ -202,34 +186,17 @@ namespace FreeHK2019.CsvHelper
             }
         }
 
-        /// <summary>
-        /// Populates the current instance from a stream
-        /// </summary>
-        /// <param name="stream">Stream</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
         public void Populate(Stream stream, bool hasHeaderRow)
         {
             Populate(stream, null, hasHeaderRow, false);
         }
 
-        /// <summary>
-        /// Populates the current instance from a stream
-        /// </summary>
-        /// <param name="stream">Stream</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
+
         public void Populate(Stream stream, bool hasHeaderRow, bool trimColumns)
         {
             Populate(stream, null, hasHeaderRow, trimColumns);
         }
 
-        /// <summary>
-        /// Populates the current instance from a stream
-        /// </summary>
-        /// <param name="stream">Stream</param>
-        /// <param name="encoding">Encoding</param>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
         public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool trimColumns)
         {
             using (CsvReader reader = new CsvReader(stream, encoding){HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns})
@@ -238,34 +205,23 @@ namespace FreeHK2019.CsvHelper
             }
         }
 
-        /// <summary>
-        /// Populates the current instance from a string
-        /// </summary>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="csvContent">Csv text</param>
         public void Populate(bool hasHeaderRow, string csvContent)
         {
             Populate(hasHeaderRow, csvContent, null, false);
         }
 
-        /// <summary>
-        /// Populates the current instance from a string
-        /// </summary>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="csvContent">Csv text</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
         public void Populate(bool hasHeaderRow, string csvContent, bool trimColumns)
         {
             Populate(hasHeaderRow, csvContent, null, trimColumns);
         }
 
         /// <summary>
-        /// Populates the current instance from a string
+        /// 使用Csv字符串填充CSV文件字段
         /// </summary>
-        /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="csvContent">Csv text</param>
-        /// <param name="encoding">Encoding</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
+        /// <param name="hasHeaderRow">true表示有标题行</param>
+        /// <param name="csvContent"></param>
+        /// <param name="encoding"></param>
+        /// <param name="trimColumns">true自动去除字段值两端的空白符</param>
         public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool trimColumns)
         {
             using (CsvReader reader = new CsvReader(encoding, csvContent){HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns})
@@ -275,9 +231,9 @@ namespace FreeHK2019.CsvHelper
         }
 
         /// <summary>
-        /// Populates the current instance using the CsvReader object
+        /// 使用CsvReader实例填充CSV文件字段
         /// </summary>
-        /// <param name="reader">CsvReader</param>
+        /// <param name="reader"></param>
         private void PopulateCsvFile(CsvReader reader)
         {
             Headers.Clear();

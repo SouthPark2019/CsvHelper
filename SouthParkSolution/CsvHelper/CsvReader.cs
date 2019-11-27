@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 
-namespace FreeHK2019.CsvHelper
+namespace SouthParkSolution.CsvHelper
 {
     /// <summary>
     /// Class to read csv content from various sources

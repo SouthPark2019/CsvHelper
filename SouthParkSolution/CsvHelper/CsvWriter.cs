@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FreeHK2019.CsvHelper
+namespace SouthParkSolution.CsvHelper
 {
     /// <summary>
     /// Class to write data to a csv file

@@ -1,0 +1,7 @@
+E:\CsvHelper\SouthParkSolution\CsvHelper\bin\Debug\netcoreapp3.0\CsvHelper.deps.json
+E:\CsvHelper\SouthParkSolution\CsvHelper\bin\Debug\netcoreapp3.0\CsvHelper.dll
+E:\CsvHelper\SouthParkSolution\CsvHelper\bin\Debug\netcoreapp3.0\CsvHelper.pdb
+E:\CsvHelper\SouthParkSolution\CsvHelper\obj\Debug\netcoreapp3.0\CsvHelper.AssemblyInfoInputs.cache
+E:\CsvHelper\SouthParkSolution\CsvHelper\obj\Debug\netcoreapp3.0\CsvHelper.AssemblyInfo.cs
+E:\CsvHelper\SouthParkSolution\CsvHelper\obj\Debug\netcoreapp3.0\CsvHelper.dll
+E:\CsvHelper\SouthParkSolution\CsvHelper\obj\Debug\netcoreapp3.0\CsvHelper.pdb

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace SouthParkSolution.CsvHelper
+namespace Gocool
 {
     /// <summary>
     /// Class to write data to a csv file
@@ -279,6 +279,11 @@ namespace SouthParkSolution.CsvHelper
                 bool quotesRequired = fields[i].Contains(",");
                 bool escapeQuotes = fields[i].Contains("\"");
                 string fieldValue = (escapeQuotes ? fields[i].Replace("\"", "\"\"") : fields[i]);
+
+                if(fieldValue == "")
+                {
+                    fieldValue = "\"\"";
+                }
 
                 if (ReplaceCarriageReturnsAndLineFeedsFromFieldValues && (fieldValue.Contains("\r") || fieldValue.Contains("\n")))
                 {

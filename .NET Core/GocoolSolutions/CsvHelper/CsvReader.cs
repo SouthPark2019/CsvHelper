@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 
-namespace SouthParkSolution.CsvHelper
+namespace Gocool
 {
     /// <summary>
     /// Class to read csv content from various sources
@@ -30,7 +30,7 @@ namespace SouthParkSolution.CsvHelper
         /// <summary>
         /// Gets or sets whether column values should be trimmed
         /// </summary>
-        public bool TrimColumns { get; set; }
+        public bool TrimColumns { get; set; } = true;
 
         /// <summary>
         /// Gets or sets whether the csv file has a header row
@@ -185,7 +185,10 @@ namespace SouthParkSolution.CsvHelper
         {
             Fields = null;
             string line = _streamReader.ReadLine();
-
+            while(line != null && line.Length == 0)
+            {
+                line = _streamReader.ReadLine();
+            }
             if (line == null)
                 return false;
 
@@ -337,8 +340,6 @@ namespace SouthParkSolution.CsvHelper
                 _stream.Dispose();
             }
         }
-
         #endregion Methods
-
     }
 }
